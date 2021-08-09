@@ -44,13 +44,13 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'cloudinary',
     'django_extensions',
-    
-    #Third party apps
+
+    #Rest Framework
     'rest_framework',
     'rest_framework.authtoken',
-    'corsheaders'
-
     
+    #Third party apps
+    'corsheaders'
     #Local Apps
     'users',
     'products',
