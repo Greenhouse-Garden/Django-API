@@ -13,6 +13,17 @@ from django.views.decorators.csrf import csrf_exempt
 #serializer
 from products.serializers import ProductsSerializer
      
+     
+@api_view(['GET'])
+def get_one(request, productId):
+    try:
+        product = Products.objects.get(pk=productId)
+    except Products.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    serializer = ProductsSerializer(product)
+    return Response(serializer.data)
+    
+
 @api_view(['GET'])
 def get_all(request):
     product = Products.objects.all()

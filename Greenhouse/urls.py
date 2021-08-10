@@ -21,6 +21,8 @@ from django.urls import path, include
 
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls import url 
+
 
 #users
 from users.views import users as users_views
@@ -28,8 +30,6 @@ from users.views.login import UserLoginAPIView as login
 
 #products
 from products import views
-
-#transactions
 
 
 urlpatterns = [
@@ -42,5 +42,7 @@ urlpatterns = [
     
     #products paths
     path('products/create/', views.create, name='create'),
-    path('products/list/', views.get_all, name='list')
+    path('products/list/', views.get_all, name='list'),
+    path('products/get/<int:productId>/', views.get_one, name='get')
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

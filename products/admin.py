@@ -10,7 +10,7 @@ from products.models import Products
 @admin.register(Products)
 
 class ProductsAdmin(admin.ModelAdmin):
-    list_display = ['name', 'description', 'price', 'stock']
+    list_display = ['id', 'name', 'description', 'price', 'stock']
     list_display_links = ['name']
     list_editable = ['description', 'price']
     search_fields = ['created_at']

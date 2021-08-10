@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     
     #Third party apps
-    'corsheaders'
+    'corsheaders',
     #Local Apps
     'users',
     'products',
