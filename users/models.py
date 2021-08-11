@@ -7,6 +7,7 @@ from creditcards.models import CardNumberField, CardExpiryField, SecurityCodeFie
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile_picture = models.ImageField(blank=True, null=True)
     address = models.CharField(max_length=100, blank=True)
     postalCode = models.CharField(max_length=10, blank=False)
     city = models.CharField(max_length=100, blank=True, null=True)
