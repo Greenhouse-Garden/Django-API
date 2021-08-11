@@ -28,7 +28,8 @@ urlpatterns = [
     path('users/login/', login.as_view(), name='login'),
     path('users/signup/', users_views.signup, name='signup'),
     path('users/verify/', users_views.account_verification, name='verify'),
-    
+    path('', include(router.urls)),
+
     #products paths
     path('products/create/', views.create, name='create'),
     path('products/list/', views.get_all, name='list'),
