@@ -24,11 +24,11 @@ router.register(r'profile', ProfileCompletionViewSet, basename='profile')
 urlpatterns = [
     #users paths
     path('admin/', admin.site.urls),
+    path('', include(router.urls)),
     path('users/', users_views.UserListView.as_view(), name='users'),
     path('users/login/', login.as_view(), name='login'),
     path('users/signup/', users_views.signup, name='signup'),
     path('users/verify/', users_views.account_verification, name='verify'),
-    path('', include(router.urls)),
 
     #products paths
     path('products/create/', views.create, name='create'),
