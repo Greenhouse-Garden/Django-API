@@ -8,6 +8,7 @@ from django.conf.urls import url
 
 #Django REST framework
 from rest_framework.routers import DefaultRouter
+from rest_framework.authtoken.views import obtain_auth_token
 
 #users
 from users.views import users as users_views
@@ -24,11 +25,12 @@ router.register(r'profile', ProfileCompletionViewSet, basename='profile')
 urlpatterns = [
     #users paths
     path('admin/', admin.site.urls),
-    path('', include(router.urls)),
+    path('auth/', obtain_auth_token),
     path('users/', users_views.UserListView.as_view(), name='users'),
     path('users/login/', login.as_view(), name='login'),
     path('users/signup/', users_views.signup, name='signup'),
     path('users/verify/', users_views.account_verification, name='verify'),
+    path('', include(router.urls)),
 
     #products paths
     path('products/create/', views.create, name='create'),
