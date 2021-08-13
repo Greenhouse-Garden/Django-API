@@ -8,6 +8,7 @@ from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.pagination import PageNumberPagination
 from users.permissions import IsOwnProfile
+from django.http import HttpResponseRedirect
 
 #models
 from django.contrib.auth.models import User
@@ -49,11 +50,14 @@ def signup(request):
         return Response(data)
 
 @api_view(['POST'])
-def account_verification(request):
+def account_verification(request, token):
     """Account verification API View"""
-    if request.method == 'POST':
-        serializer = AccountVerificationSerializer(data=request.data)
+    if request.method == 'GET':
+        token = request.path.split('/')
+        token = token[3]
+        data = {'token':f'{token}'}
+        serializer = AccountVerificationSerializer(data=data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        data = {'message': 'Account verification success'}
-        return Response(data, status=status.HTTP_200_OK)
+        data = {'message':'account verified successfully'}
+        return HttpResponseRedirect('https://pedantic-panini-9d6199.netlify.app/verification%27')
