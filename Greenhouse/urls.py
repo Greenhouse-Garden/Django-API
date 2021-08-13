@@ -29,7 +29,7 @@ urlpatterns = [
     path('users/', users_views.UserListView.as_view(), name='users'),
     path('users/login/', login.as_view(), name='login'),
     path('users/signup/', users_views.signup, name='signup'),
-    path('users/verify/', users_views.account_verification, name='verify'),
+    path('users/verify/<token>', users_views.account_verification, name='verify'),
     path('', include(router.urls)),
 
     #products paths
