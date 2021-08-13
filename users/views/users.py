@@ -49,7 +49,7 @@ def signup(request):
         data = NewUserSerializer(user).data
         return Response(data)
 
-@api_view(['POST'])
+@api_view(['GET'])
 def account_verification(request, token):
     """Account verification API View"""
     if request.method == 'GET':
@@ -60,4 +60,4 @@ def account_verification(request, token):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         data = {'message':'account verified successfully'}
-        return HttpResponseRedirect('https://pedantic-panini-9d6199.netlify.app/verification%27')
+        return HttpResponseRedirect("https://sleepy-heisenberg-78d033.netlify.app/verification/%22)
